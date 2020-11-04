@@ -97,7 +97,7 @@ public String lireCouleurDuJeton(int ligne, int colonne){
    return Cellules[ligne][colonne].recupererJeton().lireCouleur();
 }       
  
-public boolean  etreGagnantePourJoueur(Joueur){
+/* public boolean  etreGagnantePourJoueur(Joueur){
    
 }
  
@@ -123,7 +123,7 @@ public boolean supprimerJeton(int, int){
  
 public Jeton recupererJeton(int, int){
    
-}
+}*/
 
 
 
