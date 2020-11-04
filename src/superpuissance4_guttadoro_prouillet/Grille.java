@@ -95,6 +95,7 @@ public boolean celluleOccupee(int ligne, int colonne){
 public String lireCouleurDuJeton(int ligne, int colonne){
     //renvoie la couleur du jeton de la cellule ciblée
    return Cellules[ligne][colonne].recupererJeton().lireCouleur();
+   
 }       
  
 /* public boolean  etreGagnantePourJoueur(Joueur){
