@@ -21,6 +21,7 @@ Cellules = new Cellule [6][7];
 
 
 public boolean ajouterJetonDansColonne (Jeton couleurJeton,int colonne) {
+    //ajoute le jeton dans la colonne ciblée, sur la cellule vide la plus basse. Renvoie faux si la colonne était pleine.
 
  boolean b =true;
  for( int i =6; i< Cellules.length; i--) {
@@ -35,7 +36,7 @@ public boolean ajouterJetonDansColonne (Jeton couleurJeton,int colonne) {
 }
 
 public boolean etreRemplie(){
-// va renvoyer vrai si grille pleine
+//  renvoie vrai si la grille est pleine
 boolean b = true;
 for (int i =0; i < Cellules.length; i++){
     for (int j = 0;  j< Cellules.length; j++){
@@ -54,6 +55,7 @@ return b;
 
 
 public void viderGrille() {
+    //vide la grille
     for (int i =0; i < Cellules.length; i++){
      for (int j = 0;  j< Cellules.length; j++){
         Cellules [i][j].jetonCourant = null;
@@ -84,6 +86,7 @@ public void  afficherGrilleSurConsole(){
 }
 }
 public boolean celluleOccupee(int ligne, int colonne){
+    // renvoie vrai si la cellule de coordonnées données est occupée par un jeton.
   
     if (Cellules[ligne][colonne].recupererJeton()==null){
         return false;
@@ -95,37 +98,75 @@ public boolean celluleOccupee(int ligne, int colonne){
 public String lireCouleurDuJeton(int ligne, int colonne){
     //renvoie la couleur du jeton de la cellule ciblée
    return Cellules[ligne][colonne].recupererJeton().lireCouleur();
-   
-   
 }       
  
-/* public boolean  etreGagnantePourJoueur(Joueur){
-   
+public boolean  etreGagnantePourJoueur(Joueur unJoueur){
+    //renvoie vrai si la grille est gagnante pour le joueur passé en paramètre, c’est-à-dire que 4 pions de sa couleur sont alignés en ligne, en colonne ou en diagonale.
+  int i = 0;
+  int j = 0 ;
+  int nbaligne =0 ; // > compteur
+ 
+  if (Cellules[i][j]== unJoueur.couleur) {
+      
+  }
 }
  
-public void tasserGrille(int){
+public void tasserGrille (int ligne,int colonne){
+    //lorsqu’un jeton est capturé ou détruit, tasse la grille en décalant de une igne les jetons situés au dessus de la cellule libérée.
+for (int i = ligne ; i <6 ; i++) {
+    if (i == 5) {
+        Cellules[i][colonne].jetonCourant =null;
+        }
+    else {
+        Cellules[i][colonne].jetonCourant = Cellules[i +1][colonne].jetonCourant ;
+    }
+}   
+    
+    
    
 }
-public boolean colonneRemplie(){
+//public boolean colonneRemplie(){
+   // renvoie vrai si la colonne est remplie (on ne peut y jouer un Jeton)
+
+   
+//}
+ 
+   
+
+//public boolean  placerTrouNoir(int, int ){
+    //ajoute un trou noir à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé, ou faux sinon (exemple : trou noir déjà présent)
+ 
+//}
+public boolean placerDesintegrateur(int ligne ,int colonne) {
+ //ajoute un désintégrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé, ou faux sinon (exemple : désintégrateur déjà présent)
+
+ if  (Cellules[ligne][colonne].desintegrateur) {
+     Cellules[ligne][colonne].desintegrateur = true;
+     return true;
+}
+ return false;
+ }
+
+/* public boolean supprimerJeton(int ligne, int colonne){
+    //supprime le jeton de la cellule visée. Renvoie vrai si la suppression s’est bien déroulée, ou faux autrement (jeton absent)
+  
+    if (jetonCourant == null){ // si la case est vide, ca renvoit false pcq rien à supprimer
+      return false ;  
+}
+  else {
+      return true ;
+  }
+  }
+  */
+  
+public Jeton recupererJeton(int ligne, int colonne){
+    //enlève le jeton de la cellule visée et renvoie une référence vers ce jeton.
+
+    Jeton a = Cellules[ligne][colonne].recupererJeton() ;
+    Cellules[ligne][colonne].supprimerjeton();
+    return a;
    
 }
- 
-public boolean placerTeleporteur(int, int){
-   
-}
- 
-public boolean  placerTrouNoir(int, int ){
- 
-}
- 
-public boolean supprimerJeton(int, int){
-   
-   
-}
- 
-public Jeton recupererJeton(int, int){
-   
-}*/
 
 
 
