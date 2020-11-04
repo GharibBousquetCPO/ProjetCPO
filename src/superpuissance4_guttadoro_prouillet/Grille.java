@@ -108,6 +108,7 @@ public boolean  etreGagnantePourJoueur(Joueur unJoueur){
  
   if (Cellules[i][j]== unJoueur.couleur) {
       
+      
   }
 }
  
